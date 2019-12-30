@@ -54,11 +54,4 @@ EMSCRIPTEN_BINDINGS(module)
         .function("incrementX", &MyClass::incrementX)
         .property("x", &MyClass::getX, &MyClass::setX)
         .class_function("getStringFromInstance", &MyClass::getStringFromInstance);
-
-    // emscripten::class_<MyClass>("MyClass")
-    // .construtor<int, std::string>
-    // .emscripten::function("incrementX", &MyClass::incrementX)
-    // .emscripten::property("x", &MyClass::getX, &MyClass::setX)
-    // .emscripten::class_function("getStringFromInstance", &MyClass::getStringFromInstance)
-    // ;
 }
