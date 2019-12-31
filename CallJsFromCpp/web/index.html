@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <script>
+        var counter = 0;
+        setInterval(() => {
+            document.getElementById('main').innerHTML = counter++;
+        }, 500);
+
+        var Module = {
+            onRuntimeInitialized: function() {
+                document.getElementById('state').innerHTML = 'RuntimeInitialized';
+
+                console.log('-----------------------------------------------------');
+                console.log('Module.callJsBack(): ' + Module.callJsBack());
+
+            }
+        };
+
+        function jsMethod() {
+            alert('I am a js method!');
+        }
+
+        function jsMethodWithMsg(msg) {
+            alert(msg);
+            return 0;
+        }
+    </script>
+
+    <script type="text/javascript" src="CallJsFromCpp.js"></script>
+</head>
+
+<body>
+    <h1 id="state">Loading...</h1>
+    <br>
+    <div id="main"></div>
+
+    <br>
+
+</body>
+
+</html>
