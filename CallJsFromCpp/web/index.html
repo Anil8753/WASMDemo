@@ -2,9 +2,7 @@
 <html>
 
 <head>
-    <title>Title of the document</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
+    <title>CallJsFromCpp</title>
 
     <script>
         var counter = 0;
@@ -14,21 +12,15 @@
 
         var Module = {
             onRuntimeInitialized: function() {
-                document.getElementById('state').innerHTML = 'RuntimeInitialized';
 
+                document.getElementById('state').innerHTML = 'RuntimeInitialized';
                 console.log('-----------------------------------------------------');
                 console.log('Module.callJsBack(): ' + Module.callJsBack());
-
             }
         };
 
         function jsMethod() {
-            alert('I am a js method!');
-        }
-
-        function jsMethodWithMsg(msg) {
-            alert(msg);
-            return 0;
+            alert('I am a js method and I am called from C++');
         }
     </script>
 
@@ -36,12 +28,16 @@
 </head>
 
 <body>
-    <h1 id="state">Loading...</h1>
-    <br>
-    <div id="main"></div>
+    <h3 id="state">Loading...</h3>
+    <span id="main"></span>
 
+    <br> <br>
+    <span>On load page javascript will call the C++ function, and C++ will call the javascript method back and a alert message.
+        <br><br>
+        For more information open dev tool and check the console output.
+    </span>
     <br>
-
+    <br>
 </body>
 
 </html>
