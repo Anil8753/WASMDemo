@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 1.10)
 project(CallJsFromCpp)
 
 # emsripten flags  
-set(CMAKE_CXX_FLAGS "-std=c++17 -O2 -Wall -Werror -s USE_PTHREADS=1 -s PTHREAD_POOL_SIZE=5 -s PROXY_TO_PTHREAD=1 -s TOTAL_MEMORY=1073741824 --bind")
+set(CMAKE_CXX_FLAGS "-std=c++17 -O2 -Wall -Werror -s RESERVED_FUNCTION_POINTERS=20 -s USE_PTHREADS=1 -s PTHREAD_POOL_SIZE=5 -s PROXY_TO_PTHREAD=1 -s TOTAL_MEMORY=1073741824 --bind")
 
 # add the executable
 add_executable(${CMAKE_PROJECT_NAME} src/main.cpp)

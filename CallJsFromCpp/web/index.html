@@ -3,7 +3,11 @@
 
 <head>
     <title>CallJsFromCpp</title>
-
+    <style>
+        button {
+            margin: 5px;
+        }
+    </style>
     <script>
         var counter = 0;
         setInterval(() => {
@@ -14,13 +18,28 @@
             onRuntimeInitialized: function() {
 
                 document.getElementById('state').innerHTML = 'RuntimeInitialized';
-                console.log('-----------------------------------------------------');
-                console.log('Module.callJsBack(): ' + Module.callJsBack());
             }
         };
 
         function jsMethod() {
             alert('I am a js method and I am called from C++');
+        }
+
+        function jsMethodAgrs(title, msg) {
+            alert(title + '\n' + msg);
+        }
+
+        /////////////////////////////////////////////////
+        function jsCallback(msg) {
+            alert(msg);
+        }
+
+        var fnMap = {
+            0: jsCallback
+        }
+
+        function functionMap(index, data) {
+            fnMap[index](data);
         }
     </script>
 
@@ -32,11 +51,12 @@
     <span id="main"></span>
 
     <br> <br>
-    <span>On load page javascript will call the C++ function, and C++ will call the javascript method back and a alert message.
-        <br><br>
-        For more information open dev tool and check the console output.
-    </span>
+    <button onclick="Module.callJsBack()">Call jsMethod() back</button>
     <br>
+    <button onclick="Module.callJsBackWithAgrs()">Call callJsBackWithAgrs() back</button>
+    <br>
+    <button onclick="Module.cppFunctionWithJsCallback(0)">Js function as a callback</button>
+
     <br>
 </body>
 
