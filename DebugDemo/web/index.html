@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Title of the document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <script>
+        var counter = 0;
+        setInterval(() => {
+            document.getElementById('main').innerHTML = counter++;
+        }, 500);
+
+        var Module = {
+            onRuntimeInitialized: function() {
+                document.getElementById('state').innerHTML = 'RuntimeInitialized';
+
+                console.log('-----------------------------------------------------');
+                var upperCase = Module.makeUppperCase("hello world");
+                console.log('Module.makeUppperCase("hello world"): ' + upperCase);
+
+                console.log('-----------------------------------------------------');
+                console.log('Module.class test');
+
+                var instance = new Module.MyClass(10, "hello");
+                console.log('instance.x: ' + instance.x);
+                instance.incrementX();
+                instance.x; // 11
+                console.log('instance.x: ' + instance.x);
+                instance.x = 20; // 20
+                console.log('instance.x: ' + instance.x);
+                var getStringFromInatance = Module.MyClass.getStringFromInstance(instance); // "hello"
+                console.log('Module.MyClass.getStringFromInstance(instance): ' + getStringFromInatance);
+                instance.delete();
+
+                console.log('-----------------------------------------------------');
+
+            }
+        };
+    </script>
+
+    <script type="text/javascript" src="DebugDemo.js"></script>
+</head>
+
+<body>
+    <h1 id="state">Loading...</h1>
+    <br>
+    <div id="main"></div>
+
+    <br>
+
+</body>
+
+</html>
