@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Title of the document</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Debug Demo</title>
 
     <script>
         var counter = 0;
@@ -15,40 +15,95 @@
         var Module = {
             onRuntimeInitialized: function() {
                 document.getElementById('state').innerHTML = 'RuntimeInitialized';
-
-                console.log('-----------------------------------------------------');
-                var upperCase = Module.makeUppperCase("hello world");
-                console.log('Module.makeUppperCase("hello world"): ' + upperCase);
-
-                console.log('-----------------------------------------------------');
-                console.log('Module.class test');
-
-                var instance = new Module.MyClass(10, "hello");
-                console.log('instance.x: ' + instance.x);
-                instance.incrementX();
-                instance.x; // 11
-                console.log('instance.x: ' + instance.x);
-                instance.x = 20; // 20
-                console.log('instance.x: ' + instance.x);
-                var getStringFromInatance = Module.MyClass.getStringFromInstance(instance); // "hello"
-                console.log('Module.MyClass.getStringFromInstance(instance): ' + getStringFromInatance);
-                instance.delete();
-
-                console.log('-----------------------------------------------------');
-
             }
         };
+
+        function startDebugTest() {
+
+            console.log('-----------------------------------------------------');
+            var upperCase = Module.makeUppperCase("hello world");
+            console.log('Module.makeUppperCase("hello world"): ' + upperCase);
+
+            console.log('-----------------------------------------------------');
+            console.log('Module.class test');
+
+            var instance = new Module.MyClass(10, "hello");
+            console.log('instance.x: ' + instance.x);
+            instance.incrementX();
+            instance.x; // 11
+            console.log('instance.x: ' + instance.x);
+            instance.x = 20; // 20
+            console.log('instance.x: ' + instance.x);
+            var getStringFromInatance = Module.MyClass.getStringFromInstance(instance); // "hello"
+            console.log('Module.MyClass.getStringFromInstance(instance): ' + getStringFromInatance);
+            instance.delete();
+
+            console.log('-----------------------------------------------------');
+        }
     </script>
 
     <script type="text/javascript" src="DebugDemo.js"></script>
 </head>
 
 <body>
+    <div>
+        <b>Activate the emsdk:</b> <br> Go to emsdk directory and run the commands below to activate the emsdk and prepare the environment variables
+        <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+            <table>
+                <tr>
+                    <td>./emsdk activate latest</td>
+                </tr>
+                <tr>
+                    <td>source ./emsdk_env.sh</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div>
+        <b>Build and run the  project:</b> <br> Go to the project directory and run the commands below
+        <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+
+            <table>
+                <tr>
+                    <td>mkdir build</td>
+                </tr>
+                <tr>
+                    <td>cd build</td>
+                </tr>
+                <tr>
+                    <td>./emconfigure cmake ..</td>
+                </tr>
+                <tr>
+                    <td>emmake make</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <b>Run the web server:</b> <br> Go to the project "web" directory and execute the server.py
+    <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+        <table>
+            <tr>
+                <td>./emsdk activate latest</td>
+            </tr>
+            <tr>
+                <td>source ./emsdk_env.sh</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+
+    <hr>
+    <div>
+        Open brower dev tool. src/main.cpp is available to place the breakpoints under "Sources" tab of devtool
+    </div>
+
     <h1 id="state">Loading...</h1>
     <br>
     <div id="main"></div>
-
     <br>
+    <button onclick="startDebugTest()">Start Debug Test</button>
 
 </body>
 
