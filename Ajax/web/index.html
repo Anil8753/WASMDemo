@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Ajax Demo</title>
+
+    <script>
+        var counter = 0;
+        setInterval(() => {
+            document.getElementById('main').innerHTML = counter++;
+        }, 500);
+
+        var Module = {
+            onRuntimeInitialized: function() {
+                document.getElementById('state').innerHTML = 'RuntimeInitialized';
+            }
+        };
+
+        function startAsyncTest() {
+            Module.asyncGet();
+        }
+
+        function startSyncTest() {
+            Module.syncGet();
+        }
+    </script>
+
+    <script type="text/javascript" src="Ajax.js"></script>
+
+    <style>
+        .box {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <b>Activate the emsdk:</b> <br> Go to emsdk directory and run the commands below to activate the emsdk and prepare the environment variables
+        <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+            <table>
+                <tr>
+                    <td>./emsdk activate latest</td>
+                </tr>
+                <tr>
+                    <td>source ./emsdk_env.sh</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div>
+        <b>Build and run the  project:</b> <br> Go to the project directory and run the commands below
+        <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+
+            <table>
+                <tr>
+                    <td>mkdir build</td>
+                </tr>
+                <tr>
+                    <td>cd build</td>
+                </tr>
+                <tr>
+                    <td>emconfigure cmake ..</td>
+                </tr>
+                <tr>
+                    <td>emmake make</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <b>Run the web server:</b> <br> Go to the project "web" directory and execute the server.py
+    <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+        <table>
+            <tr>
+                <td>./emsdk activate latest</td>
+            </tr>
+            <tr>
+                <td>source ./emsdk_env.sh</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+
+    <hr>
+
+    <h3 id="state">Loading...</h3>
+    <br>
+    <div id="main"></div>
+    <br>
+    <button class="box" onclick="startAsyncTest()">Ajax Async Test</button>
+    <br>
+    <button class="box" onclick="startSyncTest()">Ajax Sync Test</button>
+    <div class="box">
+        <a href="https://emscripten.org/docs/api_reference/fetch.html">https://emscripten.org/docs/api_reference/fetch.html</a>
+    </div>
+
+</body>
+
+</html>
