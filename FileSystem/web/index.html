@@ -43,8 +43,65 @@
 </head>
 
 <body>
+
     <div>
-        <b>Activate the emsdk:</b> <br> Go to emsdk directory and run the commands below to activate the emsdk and prepare the environment variables
+        <h3 id="state">Loading...</h3>
+        <br>
+        <div id="main"></div>
+        <br>
+
+        <textarea id='id-in' rows="2" cols="50">This is a samle text to be wtitten in the file.</textarea>
+        <br>
+
+        <button class="box" onclick="writeFileinCpp()">Write File in C++</button>
+        <br>
+        <button class="box" onclick="readFileInJs()">Read File in JS</button>
+        <div class="box">
+            <a href="https://emscripten.org/docs/porting/files/file_systems_overview.html#file-system-overview">https://emscripten.org/docs/porting/files/file_systems_overview.html#file-system-overview</a>
+            <br>
+            <a href="https://emscripten.org/docs/api_reference/Filesystem-API.html#filesystem-api-filesystems">https://emscripten.org/docs/api_reference/Filesystem-API.html#filesystem-api-filesystems</a>
+        </div>
+        <br><br>
+    </div>
+    <hr>
+
+    <div>
+        <div>
+            <b>Activate the emsdk:</b> <br> Go to emsdk directory and run the commands below to activate the emsdk and prepare the environment variables
+            <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+                <table>
+                    <tr>
+                        <td>./emsdk activate latest</td>
+                    </tr>
+                    <tr>
+                        <td>source ./emsdk_env.sh</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div>
+            <b>Build and run the  project:</b> <br> Go to the project directory and run the commands below
+            <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
+
+                <table>
+                    <tr>
+                        <td>mkdir build</td>
+                    </tr>
+                    <tr>
+                        <td>cd build</td>
+                    </tr>
+                    <tr>
+                        <td>emconfigure cmake ..</td>
+                    </tr>
+                    <tr>
+                        <td>emmake make</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br>
+        <b>Run the web server:</b> <br> Go to the project "web" directory and execute the server.py
         <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
             <table>
                 <tr>
@@ -56,60 +113,7 @@
             </table>
         </div>
     </div>
-    <br>
-    <div>
-        <b>Build and run the  project:</b> <br> Go to the project directory and run the commands below
-        <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
-
-            <table>
-                <tr>
-                    <td>mkdir build</td>
-                </tr>
-                <tr>
-                    <td>cd build</td>
-                </tr>
-                <tr>
-                    <td>emconfigure cmake ..</td>
-                </tr>
-                <tr>
-                    <td>emmake make</td>
-                </tr>
-            </table>
-        </div>
     </div>
-    <br>
-    <b>Run the web server:</b> <br> Go to the project "web" directory and execute the server.py
-    <div style="margin-left: 50px; margin-top: 5px; font-style: italic;">
-        <table>
-            <tr>
-                <td>./emsdk activate latest</td>
-            </tr>
-            <tr>
-                <td>source ./emsdk_env.sh</td>
-            </tr>
-        </table>
-    </div>
-    </div>
-
-    <hr>
-
-    <h3 id="state">Loading...</h3>
-    <br>
-    <div id="main"></div>
-    <br>
-
-    <textarea id='id-in' rows="2" cols="50">This is a samle text to be wtitten in the file.</textarea>
-    <br>
-
-    <button class="box" onclick="writeFileinCpp()">Write File in C++</button>
-    <br>
-    <button class="box" onclick="readFileInJs()">Read File in JS</button>
-    <div class="box">
-        <a href="https://emscripten.org/docs/porting/files/file_systems_overview.html#file-system-overview">https://emscripten.org/docs/porting/files/file_systems_overview.html#file-system-overview</a>
-        <br>
-        <a href="https://emscripten.org/docs/api_reference/Filesystem-API.html#filesystem-api-filesystems">https://emscripten.org/docs/api_reference/Filesystem-API.html#filesystem-api-filesystems</a>
-    </div>
-
 </body>
 
 </html>
