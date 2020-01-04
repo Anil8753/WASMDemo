@@ -1,0 +1,2 @@
+Fetch API
+The Emscripten Fetch API allows native code to transfer files via XHR (HTTP GET, PUT, POST) from remote servers, and to persist the downloaded files locally in browser’s IndexedDB storage, so that they can be reaccessed locally on subsequent page visits. The Fetch API is callable from multiple threads, and the network requests can be run either synchronously or asynchronously as desired.
