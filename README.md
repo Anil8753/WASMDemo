@@ -5,7 +5,7 @@ Setup environment
 
 1. open bash
 
-2. go to emsdk directorty and followings run command
+2. go to emsdk directory and followings run command
 
     ./emsdk activate latest
     
